@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Environment
+.env
+venv/
+env/
+
+# Data files
+*.csv
+*.xlsx
+
+# Model files
+*.pkl
+
+# Plots
+*.png
+*.jpg
+
+# OS files
+.DS_Store
+Thumbs.db
