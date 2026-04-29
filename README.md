@@ -193,11 +193,9 @@ model.fit(X_train_sc,y_train)
 
 
 ## 8. EVALUATION
-### 8.1 Confusion Matrix Heatmap 
-![Cm_1](plots/cm_1.png)
 ## 📊 Model Evaluation
 
-### 8.2 Accuracy
+### 8.1 Accuracy
 - **Training Accuracy:** 100%
 - **Test Accuracy:** 91%
 
@@ -205,9 +203,8 @@ model.fit(X_train_sc,y_train)
 
 ---
 
-### 8.3 Confusion Matrix
-
-![Confusion Matrix](plots/confusion_matrix.png)
+### 8.2 Confusion Matrix
+![Cm_1](plots/cm_1.png)
 
 - Correct predictions:
   - **53** (class 0)
@@ -220,7 +217,7 @@ model.fit(X_train_sc,y_train)
 
 ---
 
-### 8.4 Classification Report
+### 8.3 Classification Report
 
 - **Precision (class 0):** 0.96 → very accurate for non-purchased customers  
 - **Recall (class 1):** 0.91 → good at identifying actual buyers  
@@ -228,7 +225,7 @@ model.fit(X_train_sc,y_train)
 
 ---
 
-### 8.5 Conclusion
+### 8.4 Conclusion
 
 - The model achieves **strong overall performance (91% accuracy)**  
 - Slight **overfitting** is present but not severe  
