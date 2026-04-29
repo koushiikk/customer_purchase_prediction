@@ -139,7 +139,7 @@ df = pd.read_csv("Customer_Data.csv")
 
 ---
 
-## 3. FEATURE SELECTION
+## 4. FEATURE SELECTION
 
 ```python
 X = data_set.drop(['Purchased','User ID'],axis=1)
@@ -147,7 +147,7 @@ y = data_set['Purchased']
 ```
 
 
-## 4. TRAIN TEST SPLIT
+## 5. TRAIN TEST SPLIT
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -156,7 +156,7 @@ X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2,random_stat
 
 
 
-## 5. FEATURE SCALING
+## 6. FEATURE SCALING
 
 ```python
 scaler = StandardScaler()
@@ -166,14 +166,14 @@ X_test_sc = scaler.transform(X_test)
 ```
 
 
-## 6. TRAIN MODEL
+## 7. TRAIN MODEL
 
 ```python
 model = DecisionTreeClassifier()
 model.fit(X_train_sc,y_train)
 ```
 
-### 6.1 Decision Tree 
+### 7.1 Decision Tree 
 
 ![Decision_tree](plots/DT_1.png)
 
@@ -182,7 +182,7 @@ model.fit(X_train_sc,y_train)
 - The tree is deep and complex, indicating possible overfitting
 - It captures non-linear patterns, but may not generalize well to new dataSome overlap exists → model needs non-linear boundary
 
-### 6.2 Depth Vs Accuracy 
+### 7.2 Depth Vs Accuracy 
 
 ![Depth vs Accuracy](plots/Overfitting_analysis.png)
 
@@ -231,14 +231,13 @@ model.fit(X_train_sc,y_train)
 - Slight **overfitting** is present but not severe  
 - Performs slightly better for **class 0 than class 1**  
 
-# ==============================
-# 9. HYPERPARAMETER TUNING
-# ==============================
 
-param_grid = {
-    'max_depth': [2,3,4,5,6],
+## 9. HYPERPARAMETER TUNING
+```python
+params = {
+    'max_depth': [2,3,4,5],
     'min_samples_split': [2,5,10],
-    'criterion': ['gini','entropy']
+    'min_samples_leaf': [1,2,5]
 }
 
 grid = GridSearchCV(
@@ -251,40 +250,50 @@ grid = GridSearchCV(
 grid.fit(X_train, y_train)
 
 best_model = grid.best_estimator_
+```
 
-# ==============================
-# 10. FINAL MODEL
-# ==============================
+
+## 10. FINAL MODEL
+
 
 y_pred_final = best_model.predict(X_test)
 
 print("\nFinal Accuracy:", accuracy_score(y_test, y_pred_final))
 
-## Decision tree
+
+## 11. VISUALIZATION
+### 11.1 Decision Tree 
+
+![Decision_tree](plots/DT_2.png)
+
+**Insight:**
+- The model first splits on Age, showing it is the most important factor
+- Estimated Salary is used in the next splits, refining the prediction
+- The tree is simpler and more balanced, indicating better generalization
+- ### 11.2 Confusion Matrix
+![Cm_2](plots/cm_2.png)
+
+- Correct predictions:
+  - **55** (class 0)
+  - **21** (class 1)
+- Misclassifications:
+  - **3 false positives**
+  - **1 false negative**
+
+👉 The model shows improved performance with fewer errors and better accuracy across both classes.
 
 
-# ==============================
-# 11. VISUALIZATION
-# ==============================
 
-sns.countplot(x='Purchased', data=df)
-plt.title('Purchase Distribution')
-plt.show()
 
-plt.hist(df['Age'], bins=15)
-plt.title('Age Distribution')
-plt.show()
 
-plt.hist(df['EstimatedSalary'], bins=15)
-plt.title('Salary Distribution')
-plt.show()
 
-# ==============================
 # 12. FEATURE IMPORTANCE
-# ==============================
+### 12.1 Feature Importance
 
-importance = best_model.feature_importances_
+![Feature Importance](plots/feature_importance.png)
 
-plt.barh(['Age', 'EstimatedSalary'], importance)
-plt.title("Feature Importance")
-plt.show()
+- **Age is the most important feature** in predicting customer purchases.  
+- **Estimated Salary also plays a significant role** in the decision.  
+- **Gender has almost no impact** on the model.  
+
+👉 The model mainly relies on **Age and Estimated Salary** for making predictions.
