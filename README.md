@@ -178,7 +178,7 @@ model.fit(X_train_sc,y_train)
 ![Decision_tree](plots/DT_1.png)
 
 **Insight:**
-- The model mainly uses Estimated Salary and Age to make decisions.
+- The model mainly uses Estimated Salary and Age to make decisions
 - The tree is deep and complex, indicating possible overfitting
 - It captures non-linear patterns, but may not generalize well to new dataSome overlap exists → model needs non-linear boundary
 
@@ -187,9 +187,9 @@ model.fit(X_train_sc,y_train)
 ![Depth vs Accuracy](plots/Overfitting_analysis.png)
 
 **Insight:**
-- The model mainly uses Estimated Salary and Age to make decisions.
-- The tree is deep and complex, indicating possible overfitting
-- It captures non-linear patterns, but may not generalize well to new dataSome overlap exists → model needs non-linear boundary
+- As tree depth increases, training accuracy keeps increasing, showing the model is learning more details
+- Test accuracy peaks around depth 3–5, indicating the best performance
+- After that, test accuracy drops, which shows overfitting
 
 
 
