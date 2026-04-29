@@ -79,7 +79,6 @@ The dataset (`Customer_Data.csv`) contains customer information.
 
 ## Project Structure
 
-```text
 Customer_Purchase_Prediction/
 │
 ├── Decision_Tree.ipynb
