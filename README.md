@@ -86,3 +86,159 @@ Customer_Purchase_Prediction/
 ├── Customer_Data.csv
 ├── README.md
 └── requirements.txt
+
+## Project Workflow
+
+1. Import libraries  
+2. Load dataset  
+3. Preprocess data  
+4. Train-test split  
+5. Feature scaling  
+6. Train Decision Tree  
+7. Evaluate model  
+8. Hyperparameter tuning  
+9. Final prediction  
+
+---
+
+## 💻 Complete Code
+
+```python
+# ==============================
+# 1. IMPORT LIBRARIES
+# ==============================
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+
+# ==============================
+# 2. LOAD DATASET
+# ==============================
+
+df = pd.read_csv("Customer_Data.csv")
+
+# ==============================
+# 3. Exploitary data analysis
+# ==============================
+### 🔹 Pairplot - Feature Relationships
+
+![Pairplot](plots/Eda.png)
+
+**Insight:**
+- Clear separation between Purchased and Not Purchased
+- Age and Estimated Salary show strong influence
+- Some overlap exists → model needs non-linear boundary
+
+---
+
+# ==============================
+# 3. FEATURE SELECTION
+# ==============================
+
+X = data_set.drop(['Purchased','User ID'],axis=1)
+y = data_set['Purchased']
+
+# ==============================
+# 4. TRAIN TEST SPLIT
+# ==============================
+
+from sklearn.model_selection import train_test_split
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2,random_state = 0)
+
+
+# ==============================
+# 5. FEATURE SCALING
+# ==============================
+
+scaler = StandardScaler()
+
+X_train_sc = scaler.fit_transform(X_train)
+X_test_sc = scaler.transform(X_test)
+
+# ==============================
+# 6. TRAIN MODEL
+# ==============================
+
+model = DecisionTreeClassifier()
+model.fit(X_train_sc,y_train)
+
+## 6.1 Decision tree
+
+# ==============================
+# 7. PREDICTION
+# ==============================
+
+y_pred = model.predict(X_test)
+
+# ==============================
+# 8. EVALUATION
+# ==============================
+
+
+
+## 8.1 Confustion matrix heatmap
+
+# ==============================
+# 9. HYPERPARAMETER TUNING
+# ==============================
+
+param_grid = {
+    'max_depth': [2,3,4,5,6],
+    'min_samples_split': [2,5,10],
+    'criterion': ['gini','entropy']
+}
+
+grid = GridSearchCV(
+    DecisionTreeClassifier(random_state=0),
+    param_grid,
+    cv=5,
+    scoring='accuracy'
+)
+
+grid.fit(X_train, y_train)
+
+best_model = grid.best_estimator_
+
+# ==============================
+# 10. FINAL MODEL
+# ==============================
+
+y_pred_final = best_model.predict(X_test)
+
+print("\nFinal Accuracy:", accuracy_score(y_test, y_pred_final))
+
+## Decision tree
+
+
+# ==============================
+# 11. VISUALIZATION
+# ==============================
+
+sns.countplot(x='Purchased', data=df)
+plt.title('Purchase Distribution')
+plt.show()
+
+plt.hist(df['Age'], bins=15)
+plt.title('Age Distribution')
+plt.show()
+
+plt.hist(df['EstimatedSalary'], bins=15)
+plt.title('Salary Distribution')
+plt.show()
+
+# ==============================
+# 12. FEATURE IMPORTANCE
+# ==============================
+
+importance = best_model.feature_importances_
+
+plt.barh(['Age', 'EstimatedSalary'], importance)
+plt.title("Feature Importance")
+plt.show()
