@@ -195,9 +195,9 @@ model.fit(X_train_sc,y_train)
 
 
 ## 7. PREDICTION
-
-
+```python
 y_pred = model.predict(X_test)
+```
 
 
 ## 8. EVALUATION
