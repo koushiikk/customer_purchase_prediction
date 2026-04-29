@@ -76,16 +76,6 @@ The dataset (`Customer_Data.csv`) contains customer information.
 ✔ No categorical encoding required  
 
 ---
-
-## Project Structure
-
-Customer_Purchase_Prediction/
-│
-├── Decision_Tree.ipynb
-├── Customer_Data.csv
-├── README.md
-└── requirements.txt
-
 ## Project Workflow
 
 1. Import libraries  
@@ -116,6 +106,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 ```
+---
 
 
 ## 2. LOAD DATASET
@@ -123,6 +114,7 @@ from sklearn.metrics import confusion_matrix, classification_report, accuracy_sc
 ```python
 df = pd.read_csv("Customer_Data.csv")
 ```
+---
 ---
 
 
@@ -138,6 +130,7 @@ df = pd.read_csv("Customer_Data.csv")
 - Some overlap exists → model needs non-linear boundary
 
 ---
+---
 
 ## 4. FEATURE SELECTION
 
@@ -145,6 +138,7 @@ df = pd.read_csv("Customer_Data.csv")
 X = data_set.drop(['Purchased','User ID'],axis=1)
 y = data_set['Purchased']
 ```
+---
 
 
 ## 5. TRAIN TEST SPLIT
@@ -153,6 +147,7 @@ y = data_set['Purchased']
 from sklearn.model_selection import train_test_split
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2,random_state = 0)
 ```
+---
 
 
 
@@ -164,6 +159,7 @@ scaler = StandardScaler()
 X_train_sc = scaler.fit_transform(X_train)
 X_test_sc = scaler.transform(X_test)
 ```
+---
 
 
 ## 7. TRAIN MODEL
@@ -172,6 +168,7 @@ X_test_sc = scaler.transform(X_test)
 model = DecisionTreeClassifier()
 model.fit(X_train_sc,y_train)
 ```
+---
 
 ### 7.1 Decision Tree 
 
@@ -190,6 +187,7 @@ model.fit(X_train_sc,y_train)
 - As tree depth increases, training accuracy keeps increasing, showing the model is learning more details
 - Test accuracy peaks around depth 3–5, indicating the best performance
 - After that, test accuracy drops, which shows overfitting
+---
 
 
 ## 8. EVALUATION
@@ -229,7 +227,8 @@ model.fit(X_train_sc,y_train)
 
 - The model achieves **strong overall performance (91% accuracy)**  
 - Slight **overfitting** is present but not severe  
-- Performs slightly better for **class 0 than class 1**  
+- Performs slightly better for **class 0 than class 1**
+---
 
 
 ## 9. HYPERPARAMETER TUNING
@@ -251,6 +250,7 @@ grid.fit(X_train, y_train)
 
 best_model = grid.best_estimator_
 ```
+---
 
 
 ## 10. FINAL MODEL
@@ -260,6 +260,7 @@ y_pred_final = best_model.predict(X_test)
 
 print("\nFinal Accuracy:", accuracy_score(y_test, y_pred_final))
 ```
+---
 
 
 ## 11. VISUALIZATION
@@ -282,6 +283,7 @@ print("\nFinal Accuracy:", accuracy_score(y_test, y_pred_final))
   - **1 false negative**
 
 👉 The model shows improved performance with fewer errors and better accuracy across both classes.
+---
 
 
 
