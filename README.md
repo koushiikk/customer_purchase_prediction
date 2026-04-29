@@ -115,7 +115,6 @@ from sklearn.metrics import confusion_matrix, classification_report, accuracy_sc
 df = pd.read_csv("Customer_Data.csv")
 ```
 ---
----
 
 
 ## 3. Exploitary data analysis
@@ -129,7 +128,6 @@ df = pd.read_csv("Customer_Data.csv")
 - Age and Estimated Salary show strong influence
 - Some overlap exists → model needs non-linear boundary
 
----
 ---
 
 ## 4. FEATURE SELECTION
@@ -274,7 +272,6 @@ print("\nFinal Accuracy:", accuracy_score(y_test, y_pred_final))
 - Misclassifications:
   - **3 false positives**
   - **1 false negative**
-
 👉 The model shows improved performance with fewer errors and better accuracy across both classes.
 ---
 
