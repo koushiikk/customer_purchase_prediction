@@ -102,11 +102,11 @@ Customer_Purchase_Prediction/
 
 ## 💻 Complete Code
 
-```python
 # ==============================
 # 1. IMPORT LIBRARIES
 # ==============================
 
+```python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -116,12 +116,15 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+```
 
 # ==============================
 # 2. LOAD DATASET
 # ==============================
 
+```python
 df = pd.read_csv("Customer_Data.csv")
+```
 
 # ==============================
 # 3. Exploitary data analysis
