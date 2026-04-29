@@ -192,21 +192,47 @@ model.fit(X_train_sc,y_train)
 - After that, test accuracy drops, which shows overfitting
 
 
-
-
-## 7. PREDICTION
-```python
-y_pred = model.predict(X_test)
-```
-
-
 ## 8. EVALUATION
+### 8.1 Confusion Matrix Heatmap 
+![Cm_1](plots/cm_1.png)
+## 📊 Model Evaluation
 
+### 8.2 Accuracy
+- **Training Accuracy:** 100%
+- **Test Accuracy:** 91%
 
+👉 The model performs well but shows slight **overfitting** (perfect training accuracy).
 
+---
 
+### 8.3 Confusion Matrix
 
-### 8.1 Confustion matrix heatmap
+![Confusion Matrix](plots/confusion_matrix.png)
+
+- Correct predictions:
+  - **53** (class 0)
+  - **20** (class 1)
+- Misclassifications:
+  - **5 false positives**
+  - **2 false negatives**
+
+👉 The model makes very few errors and performs reliably on both classes.
+
+---
+
+### 8.4 Classification Report
+
+- **Precision (class 0):** 0.96 → very accurate for non-purchased customers  
+- **Recall (class 1):** 0.91 → good at identifying actual buyers  
+- **F1-score:** ~0.91 → balanced performance  
+
+---
+
+### 8.5 Conclusion
+
+- The model achieves **strong overall performance (91% accuracy)**  
+- Slight **overfitting** is present but not severe  
+- Performs slightly better for **class 0 than class 1**  
 
 # ==============================
 # 9. HYPERPARAMETER TUNING
