@@ -128,7 +128,7 @@ df = pd.read_csv("Customer_Data.csv")
 
 ## 3. Exploitary data analysis
 
-### 🔹 Pairplot - Feature Relationships
+### 3.1 Pairplot - Feature Relationships
 
 ![Pairplot](plots/Eda.png)
 
@@ -173,17 +173,16 @@ model = DecisionTreeClassifier()
 model.fit(X_train_sc,y_train)
 ```
 
-### 6.1 Decision tree
-### 🔹 Pairplot - Feature Relationships
+### 6.1 Decision Tree 
 
-![Pairplot](plots/DT_1.png)
+![Decision_tree](plots/DT_1.png)
 
 **Insight:**
 - The model mainly uses Estimated Salary and Age to make decisions.
 - The tree is deep and complex, indicating possible overfitting
 - It captures non-linear patterns, but may not generalize well to new dataSome overlap exists → model needs non-linear boundary
 
-### 🔹 Depth Vs Accuracy 
+### 6.2 Depth Vs Accuracy 
 
 ![Depth vs Accuracy](plots/Overfitting_analysis.png)
 
