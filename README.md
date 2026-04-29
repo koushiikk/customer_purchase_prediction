@@ -103,7 +103,7 @@ Customer_Purchase_Prediction/
 ## 💻 Complete Code
 
 
-# 1. IMPORT LIBRARIES
+## 1. IMPORT LIBRARIES
 
 ```python
 import numpy as np
@@ -118,7 +118,7 @@ from sklearn.metrics import confusion_matrix, classification_report, accuracy_sc
 ```
 
 
-# 2. LOAD DATASET
+## 2. LOAD DATASET
 
 ```python
 df = pd.read_csv("Customer_Data.csv")
@@ -126,7 +126,7 @@ df = pd.read_csv("Customer_Data.csv")
 ---
 
 
-# 3. Exploitary data analysis
+## 3. Exploitary data analysis
 
 ### 🔹 Pairplot - Feature Relationships
 
@@ -139,7 +139,7 @@ df = pd.read_csv("Customer_Data.csv")
 
 ---
 
-# 3. FEATURE SELECTION
+## 3. FEATURE SELECTION
 
 ```python
 X = data_set.drop(['Purchased','User ID'],axis=1)
@@ -147,7 +147,7 @@ y = data_set['Purchased']
 ```
 
 
-# 4. TRAIN TEST SPLIT
+## 4. TRAIN TEST SPLIT
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -156,7 +156,7 @@ X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2,random_stat
 
 
 
-# 5. FEATURE SCALING
+## 5. FEATURE SCALING
 
 ```python
 scaler = StandardScaler()
@@ -166,14 +166,14 @@ X_test_sc = scaler.transform(X_test)
 ```
 
 
-# 6. TRAIN MODEL
+## 6. TRAIN MODEL
 
 ```python
 model = DecisionTreeClassifier()
 model.fit(X_train_sc,y_train)
 ```
 
-## 6.1 Decision tree
+### 6.1 Decision tree
 ### 🔹 Pairplot - Feature Relationships
 
 ![Pairplot](plots/DT_1.png)
@@ -183,21 +183,31 @@ model.fit(X_train_sc,y_train)
 - The tree is deep and complex, indicating possible overfitting
 - It captures non-linear patterns, but may not generalize well to new dataSome overlap exists → model needs non-linear boundary
 
+### 🔹 Depth Vs Accuracy 
+
+![Depth vs Accuracy](plots/Overfitting_analysis.png)
+
+**Insight:**
+- The model mainly uses Estimated Salary and Age to make decisions.
+- The tree is deep and complex, indicating possible overfitting
+- It captures non-linear patterns, but may not generalize well to new dataSome overlap exists → model needs non-linear boundary
 
 
-# ==============================
-# 7. PREDICTION
-# ==============================
+
+
+## 7. PREDICTION
+
 
 y_pred = model.predict(X_test)
 
-# ==============================
-# 8. EVALUATION
-# ==============================
+
+## 8. EVALUATION
 
 
 
-## 8.1 Confustion matrix heatmap
+
+
+### 8.1 Confustion matrix heatmap
 
 # ==============================
 # 9. HYPERPARAMETER TUNING
