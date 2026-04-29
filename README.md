@@ -21,7 +21,7 @@ Customer Purchase Prediction is a key application of supervised machine learning
 
 ## Overview
 
-In this machine learning project, we use the **Decision Tree Classification algorithm** to predict whether a customer will purchase a product based on features like **Age** and **Estimated Salary**.
+In this machine learning project, we use the **Decision Tree Classification algorithm** to predict whether a customer will purchase a product based on features like **Gender**,**Age** and **Estimated Salary**.
 
 The project includes:
 - Data preprocessing  
@@ -68,6 +68,7 @@ The dataset (`Customer_Data.csv`) contains customer information.
 - **Features Used:**
   - `Age`
   - `EstimatedSalary`
+  -  `Gender`
 - **Target Variable:**
   - `Purchased` (0 = No, 1 = Yes)
 
