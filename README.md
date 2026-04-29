@@ -199,8 +199,6 @@ model.fit(X_train_sc,y_train)
 
 👉 The model performs well but shows slight **overfitting** (perfect training accuracy).
 
----
-
 ### 8.2 Confusion Matrix
 ![Cm_1](plots/cm_1.png)
 
@@ -213,22 +211,17 @@ model.fit(X_train_sc,y_train)
 
 👉 The model makes very few errors and performs reliably on both classes.
 
----
-
 ### 8.3 Classification Report
 
 - **Precision (class 0):** 0.96 → very accurate for non-purchased customers  
 - **Recall (class 1):** 0.91 → good at identifying actual buyers  
 - **F1-score:** ~0.91 → balanced performance  
 
----
-
 ### 8.4 Conclusion
 
 - The model achieves **strong overall performance (91% accuracy)**  
 - Slight **overfitting** is present but not severe  
 - Performs slightly better for **class 0 than class 1**
----
 
 
 ## 9. HYPERPARAMETER TUNING
