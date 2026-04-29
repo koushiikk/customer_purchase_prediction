@@ -255,10 +255,11 @@ best_model = grid.best_estimator_
 
 ## 10. FINAL MODEL
 
-
+```python
 y_pred_final = best_model.predict(X_test)
 
 print("\nFinal Accuracy:", accuracy_score(y_test, y_pred_final))
+```
 
 
 ## 11. VISUALIZATION
@@ -287,7 +288,7 @@ print("\nFinal Accuracy:", accuracy_score(y_test, y_pred_final))
 
 
 
-# 12. FEATURE IMPORTANCE
+## 12. FEATURE IMPORTANCE
 ### 12.1 Feature Importance
 
 ![Feature Importance](plots/feature_importance.png)
